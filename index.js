@@ -11,10 +11,24 @@ var LogglyEnv = {
 
 var loglevel = ['info', 'warning', 'error', 'fatal', 'debug', 'trace'];
 
+/***
+ * function Log(LogglyData)
+ * 
+ * LogglyData: string 
+ * The name of the function you are logging from. This will be added as a tag.
+ * 
+ * LogglyData: Object
+ *  { 
+ *      token: string,
+ *      subdomain: string,
+ *      tags: array of string || string
+ * }
+ */
 module.exports.Log = function(LogglyData) {
     var tags = [],
         envTags = [],
         dataTags = [];
+    if ('string' == typeof LogglyData) { LogglyData = {tags: [LogglyData]}; }
     if (LogglyEnv.tags) { envTags = LogglyEnv.tags; }
     if ('string' == typeof envTags) { envTags = [envTags] };
     if (LogglyData.tags) { dataTags = LogglyData.tags; }
