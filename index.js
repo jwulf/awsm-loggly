@@ -1,13 +1,28 @@
-/**
- * AWS Module: Action: Modularized Code
- */
+var winston = require('winston');
+require('winston-loggly');
+var Promise = require('bluebird');
 
-// Export For Lambda Handler
-module.exports.run = function(event, context, cb) {
-  return cb(null, action());
-};
+// Replace these with your Loggly values
+Loggly = {
+    token: process.env.LOGGLY_TOKEN,
+    subdomain: process.env.LOGGLY_SUBDOMAIN,
+    tags: [process.env.LOGGLY_TAGS]
+}
 
-// Your Code
-var action = function() {
-  return {message: 'Your JAWS lambda executed successfully!'};
-};
+ winston.add(winston.transports.Loggly, {
+    token: Loggly.token,
+    subdomain: Loggly.subdomain,
+    tags: Loggly.tags,
+    json:true
+});
+
+var log = Promise.promisify(winston.log);
+
+function loginfo (msg, data, callback) {
+   log('info', msg, data).then(callback);
+}
+
+module.exports.log = log;
+module.exports.info = Promise.promisify(loginfo);
+
+var loglevel = ['info', 'warning', 'error', 'fatal', 'debug', 'trace'];
