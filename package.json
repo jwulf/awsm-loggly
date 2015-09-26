@@ -1,0 +1,14 @@
+{
+  "name": "loggly",
+  "version": "0.0.1",
+  "description": "Loggly logging for your JAWS lambdas",
+  "author": "Joshua Wulf",
+  "license": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jwulf/awsm-loggly"
+  },
+  "keywords": [],
+  "devDependencies": {},
+  "dependencies": {}
+}

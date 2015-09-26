@@ -1,0 +1,15 @@
+{
+  "name": "loggly",
+  "version": "0.0.1",
+  "location": "https://github.com/jwulf/awsm-loggly",
+  "author": "Joshua Wulf <sitapati@worldsankirtan.net>",
+  "license": "MIT",
+  "description": "Loggly logging for JAWS lambda functions",
+  "resources": {
+    "cloudFormation": {
+      "LambdaIamPolicyDocumentStatements": [],
+      "ApiGatewayIamPolicyDocumentStatements": [],
+      "Resources": {}
+    }
+  }
+}
